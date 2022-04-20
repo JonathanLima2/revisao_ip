@@ -3,7 +3,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 //classe abstrata original
-abstract class animal 
+class animal 
 {
     public String raca;
     public String genero;
@@ -12,34 +12,43 @@ abstract class animal
         this.setRaca(r);
         this.setGen(g);
     }
+    //animal(){}
     void setRaca(String r){this.raca = r;}
     void setGen(String g){this.genero = g;}
 
     String getRaca(){return this.raca;}
     String getGen(){return this.genero;}
+}
 
-    boolean isAnimal(String r)
-    {
-        return r==this.getRaca()? true:false;
-    }
+//interface de metodos comuns
+interface bichos{
+    public void som(); 
 }
 
 //classe herdeira de animal
-class gato extends animal{
+class gato extends animal implements bichos{
     private String miado;
     gato(String r, String g, String m){
         super(r, g);
         this.setMiado(m);
     }
+    //gato(){}
     void setMiado(String m){this.miado = m;}
-
     String getMiado(){return this.miado;}
 
-    void som ()
+    boolean isGato(animal a){return a.getRaca()=="gato"? true:false; }
+    public void barulho(bichos b)
+    {   
+
+        b.som();
+    }
+    public void som ()
     {
         System.out.println(miado);
     }
-    boolean filhos(gato cat)
+    //polimorfismo por interface
+
+    public boolean filhos(gato cat)
     {
         return !this.getGen().equals(cat.getGen())? true:false;
     }
@@ -52,23 +61,26 @@ class gato extends animal{
 }
 
 //classe herdeira de animal
-class cachorro extends animal{
+class cachorro extends animal implements bichos{
     private String latido;
     cachorro(String r, String g, String l){
         super(r, g);
         this.setLatido(l);
     }
-
+    //cachorro(){}
     void setLatido(String l){this.latido = l;}
-
     String getLatido(){return this.latido;}
-
-    void som()
+    boolean isCao(animal a){return a.getRaca()=="cachorro"? true:false; }
+    public void barulho(bichos b)
+    {   
+            b.som();
+    }
+    public void som()
     {
         System.out.println(latido);
     }
 
-    boolean filhos(cachorro dog)
+    public boolean filhos(cachorro dog)
     {
         return !this.getGen().equals(dog.getGen())? true:false;
     }
@@ -85,31 +97,27 @@ public class heranca{
     public static void main(String[]args) throws FileNotFoundException{
         Scanner arquivo = new Scanner(new FileReader("/home/jonathan/projetos/Monitoria/Revisão/heranca+poli/animais.txt"));
         String r, g, ml;
-        gato cat1, cat2;
-        cachorro dog1, dog2;
+        gato cat;
+        cachorro dog;
+        animal a;
+        //inicializa gato
         r = arquivo.nextLine();
         g = arquivo.nextLine();
         ml = arquivo.nextLine();
-        cat1 = new gato(r, g, ml);
+        cat = new gato(r, g, ml);
+        //inicializa cachorro
         r = arquivo.nextLine();
         g = arquivo.nextLine();
         ml = arquivo.nextLine();
-        cat2 = new gato(r, g, ml);
+        dog = new cachorro(r, g, ml);
+        //inicializa um animal
         r = arquivo.nextLine();
         g = arquivo.nextLine();
-        ml = arquivo.nextLine();
-        dog1 = new cachorro(r, g, ml);
-        r = arquivo.nextLine();
-        g = arquivo.nextLine();
-        ml = arquivo.nextLine();
-        dog2 = new cachorro(r, g, ml);
-        dog1.id();
+        a = new animal(r, g);
+        dog.id();
         System.out.println();
-        dog2.id();
+        cat.id();
         System.out.println();
-        cat1.id();
-        System.out.println();
-        cat2.id();
         //System.out.println(cat1.filhos(cat2));
         //System.out.println(dog1.filhos(dog2));
         arquivo.close();
