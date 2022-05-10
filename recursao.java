@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 class recursao{
+
 // troca duas letras de lugar uma com a outra
     private static void troca(char[]str, int l, int h)
     {
@@ -33,14 +34,14 @@ class recursao{
         Scanner s = new Scanner(System.in);
         char[] f;
         String entrada,saida;
-
+/*
         entrada = s.nextLine();
         f = entrada.toCharArray();
         f = reverso(f, 0, f.length-1);
         saida = new String(f);
-        System.out.println(saida);
+        System.out.println(saida);*/
 
-//      System.out.println(fatorial(s.nextInt()));
+        System.out.println(fatorial(s.nextInt()));
         s.close();
     }
     

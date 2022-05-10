@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.io.*;
+import vetor.java;
+
 
 public class matriz{
 //cria uma matriz nxm    
@@ -76,7 +78,8 @@ public class matriz{
     }
     public static void main(String[]args) throws FileNotFoundException {
         //o caminho do arquivo matriz.txt depende de onde vc rodar o programa, pra saber onde ele está use pwd no terminal
-        Scanner arquivo = new Scanner(new FileReader("/home/jonathan/projetos/Monitoria/Revisão/matriz.txt"));
+        String entrada = "/home/jonathan/projetos/Monitoria/Revisão/matriz.txt";
+        Scanner arquivo = new Scanner(new FileReader(entrada));
         int n = arquivo.nextInt();
         int m = arquivo.nextInt();
         int[][] mat = mat(n,m);

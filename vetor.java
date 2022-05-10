@@ -9,7 +9,7 @@ public class vetor
         int entrada,i;
         entrada =s.nextInt();
         vet = new int[entrada];
-        for(i=0;i<vet.length;i++)
+        for(i=0;i<=vet.length;i++)
         {
             entrada=s.nextInt();
             vet[i]=entrada;
@@ -43,8 +43,8 @@ public class vetor
     public static void main(String[]args)
     {
         Scanner s = new Scanner(System.in);
-        vetList(s);
-        //vet(s);
+        //vetList(s);
+        vet(s);
         s.close();
     }
 }

@@ -8,7 +8,7 @@ public class fibonacci{
         int soma=ant+prox;
         if(n==0){
             System.out.print(ant);
-        }
+        }  
         if (n>=1)
         {
             System.out.print(ant+" "+prox);
